@@ -15,19 +15,7 @@ const images = [
 
 const galleryEl = document.querySelector(".gallery");
 
-const imgArray = [];
-
-for (let i = 0; i < images.length; i += 1) {
-  const li = document.createElement("li");
-  li.innerHTML += `<img class='gallery__img' src=${images[i].url} alt=${images[i].alt} width=200 />`;
-  imgArray.push(li);
-}
-
-galleryEl.append(...imgArray);
-
-// galleryEl.insertAdjacentHTML(
-//   "afterbegin",
-//   `<li><img class='gallery__img' src=${images[0].url} alt=${images[0].alt} width=200 /></li>
-// <li><img class='gallery__img' src=${images[1].url} alt=${images[1].alt} width=200 /></li>
-// <li><img class='gallery__img' src=${images[2].url} alt=${images[2].alt} width=200 /></li>`
-// );
+galleryEl.insertAdjacentHTML(
+  "afterbegin",
+  images.map((image) => `<li><img class='gallery__img' src=${image.url} alt=${image.alt} width=200 /></li>`).join("")
+);
